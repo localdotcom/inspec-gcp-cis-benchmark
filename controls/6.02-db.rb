@@ -99,7 +99,8 @@ sub_control_id = "#{control_id}.2"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure that the 'log_connections' database flag for Cloud SQL PostgreSQL instance is set to 'on'"
+  title "[#{control_abbrev.upcase}] Ensure that the 'log_connections' database flag for Cloud SQL
+  PostgreSQL instance is set to 'on'"
 
   desc 'Enabling the log_connections setting causes each attempted connection to the server to be logged, along with successful completion of client authentication. '
   desc 'rationale', "PostgreSQL does not log attempted connections by default. Enabling the log_connections setting will create log entries for each attempted connection
@@ -155,7 +156,8 @@ sub_control_id = "#{control_id}.3"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure that the 'log_disconnections' database flag for Cloud SQL PostgreSQL instance is set to 'on'"
+  title "[#{control_abbrev.upcase}] Ensure that the 'log_disconnections' database flag for Cloud SQL
+  PostgreSQL instance is set to 'on'"
 
   desc 'Enabling the log_disconnections setting logs the end of each session, including the session duration.'
   desc 'rationale', "PostgreSQL does not log session details such as duration and session end by default. Enabling the log_disconnections
@@ -211,7 +213,8 @@ sub_control_id = "#{control_id}.4"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure 'log_statement' database flag for Cloud SQL PostgreSQL instance is set appropriately"
+  title "[#{control_abbrev.upcase}] Ensure 'log_statement' database flag for Cloud SQL
+  PostgreSQL instance is set appropriately"
 
   desc 'The value of log_statement flag determined the SQL statements that are logged. Valid
   values are:
@@ -283,7 +286,8 @@ sub_control_id = "#{control_id}.5"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure 'log_hostname' database flag for Cloud SQL PostgreSQL instance is set to 'on'"
+  title "[#{control_abbrev.upcase}] Ensure 'log_hostname' database flag for Cloud SQL
+  PostgreSQL instance is set to 'on'"
 
   desc 'PostgreSQL logs only the IP address of the connecting hosts. The log_hostname flag
   controls the logging of hostnames in addition to the IP addresses logged. The performance
@@ -346,7 +350,8 @@ sub_control_id = "#{control_id}.6"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure that the 'log_min_messages' database flag for Cloud SQL PostgreSQL instance is set  to at least 'warning'"
+  title "[#{control_abbrev.upcase}] Ensure that the 'log_min_messages' database flag for Cloud SQL
+  PostgreSQL instance is set  to at least 'warning'"
 
   desc 'The log_min_messages flag defines the minimum message severity level that is considered
   as an error statement. Messages for error statements are logged with the SQL statement.
@@ -478,7 +483,8 @@ sub_control_id = "#{control_id}.8"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure that the 'log_min_duration_statement' database flag for Cloud SQL PostgreSQL instance is set to '-1' (disabled)"
+  title "[#{control_abbrev.upcase}] Ensure that the 'log_min_duration_statement' database flag for Cloud SQL
+  PostgreSQL instance is set to '-1' (disabled)"
 
   desc 'The log_min_duration_statement flag defines the minimum amount of execution time of a
   statement in milliseconds where the total duration of the statement is logged. Ensure that
@@ -535,7 +541,8 @@ sub_control_id = "#{control_id}.9"
 control "cis-gcp-#{sub_control_id}-#{control_abbrev}" do
   impact 'none'
 
-  title "[#{control_abbrev.upcase}] Ensure that 'cloudsql.enable_pgaudit' database flag for each Cloud SQL PostgreSQL instance is set to 'on' for centralized logging"
+  title "[#{control_abbrev.upcase}] Ensure that 'cloudsql.enable_pgaudit' database flag for each Cloud SQL
+  PostgreSQL instance is set to 'on' for centralized logging"
 
   desc 'Ensure cloudsql.enable_pgaudit database flag for Cloud SQL PostgreSQL instance is set to on to allow for centralized logging.' 
   desc 'rationale', 'As numerous other recommendations in this section consist of turning on flags for logging purposes, your organization will need a way to manage these logs.

@@ -68,12 +68,10 @@ control "cis-gcp-#{control_id}-#{control_abbrev}" do
   ref 'GCP Docs', url: 'https://cloud.google.com/iam/docs/understanding-roles'
   ref 'GCP Docs', url: 'https://cloud.google.com/iam/docs/granting-changing-revoking-access'
 
-  describe "[#{gcp_project_id}] A project-level binding of ServiceAccountUser or ServiceAccountTokenCreator" do
-    ['roles/iam.serviceAccountUser', 'roles/iam.serviceAccountTokenCreator'].each do |key|
-      subject { iam_bindings_cache.iam_bindings[key] }
-      # it { should eq nil }
+  ['roles/iam.serviceAccountUser', 'roles/iam.serviceAccountTokenCreator'].each do |role|
+    describe "[#{gcp_project_id}] A project-level binding of ServiceAccountUser or ServiceAccountTokenCreator" do
+      subject { iam_bindings_cache.iam_bindings[role] }
+      it { should eq nil }
     end
-    # subject { iam_bindings_cache.iam_bindings['roles/iam.serviceAccountUser' || 'roles/iam.serviceAccountTokenCreator'] }
-    it { should eq nil }
   end
 end

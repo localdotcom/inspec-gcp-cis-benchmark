@@ -31,7 +31,8 @@ control "cis-gcp-#{control_id}-#{control_abbrev}" do
   desc 'It is recommended to enforce all incoming connections to SQL database instance to use SSL.'
   desc 'rationale', 'SQL database connections if successfully trapped (MITM); can reveal sensitive data like credentials, database queries, query outputs etc. For security, it is recommended to always use SSL encryption when connecting to your instance. This recommendation is applicable for Postgresql, MySql generation 1 and MySql generation 2 Instances.'
 
-  tag cis_scored: true
+  # tag cis_scored: true  
+  tag cis_scored: false
   tag cis_level: 1
   tag cis_gcp: control_id.to_s
   tag cis_version: cis_version.to_s
@@ -41,19 +42,21 @@ control "cis-gcp-#{control_id}-#{control_abbrev}" do
   ref 'CIS Benchmark', url: cis_url.to_s
   ref 'GCP Docs', url: 'https://cloud.google.com/sql/docs/postgres/configure-ssl-instance'
 
-  if sql_instance_names.empty?
-    impact 'none'
-    describe "[#{gcp_project_id}] does not have CloudSQL instances. This test is Not Applicable." do
-      skip "[#{gcp_project_id}] does not have CloudSQL instances."
-    end
-  else
-    sql_instance_names.each do |db|
-      describe "[#{gcp_project_id}] CloudSQL #{db}" do
-        subject { sql_cache.instance_objects[db] }
-        ## skipped due to existing infrastructure implementation
-        # it { should have_ip_configuration_require_ssl }
-        skip 'This test skipped. See SAS-1034 for more details.'
-      end
-    end
+  ## skipped due to existing infrastructure implementation
+  # if sql_instance_names.empty?
+  #   impact 'none'
+  #   describe "[#{gcp_project_id}] does not have CloudSQL instances. This test is Not Applicable." do
+  #     skip "[#{gcp_project_id}] does not have CloudSQL instances."
+  #   end
+  # else
+  #   sql_instance_names.each do |db|
+  #     describe "[#{gcp_project_id}] CloudSQL #{db}" do
+  #       subject { sql_cache.instance_objects[db] }
+  #       it { should have_ip_configuration_require_ssl }
+  #     end
+  #   end
+  # end
+  describe 'This control is not scored' do
+    skip 'This control is not scored. See SAS-1034 for more details.'
   end
 end

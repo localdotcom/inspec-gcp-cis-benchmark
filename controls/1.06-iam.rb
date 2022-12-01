@@ -71,7 +71,7 @@ control "cis-gcp-#{control_id}-#{control_abbrev}" do
   ['roles/iam.serviceAccountUser', 'roles/iam.serviceAccountTokenCreator'].each do |role|
     describe "[#{gcp_project_id}] A project-level binding of ServiceAccountUser or ServiceAccountTokenCreator" do
       subject { iam_bindings_cache.iam_bindings[role] }
-      it { should eq nil }
+      its { should eq nil }
     end
   end
 end
